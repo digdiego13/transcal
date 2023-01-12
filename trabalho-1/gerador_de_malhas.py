@@ -7,12 +7,12 @@ L = [8, 4] # [Lx] or [Lx, Ly]
 dim = len(L)
 
 #discretization variables
-n = [18, 9] # [nx] or [nx, ny]
-dist = ['trig', 'trig'] # [distx] or [distx, disty]
+n = [8, 4] # [nx] or [nx, ny]
+dist = ['poly', 'poly'] # [distx] or [distx, disty]
 geo = 'tri' # quad or tri
 
 # if discretization is polinomial
-npol = [0.7, 0.7] # [polyXDistribution, polyYDistribution]
+npol = [1, 1] # [polyXDistribution, polyYDistribution]
 
 # if discretization is senoidal
 k = [2, 3] # [kx] or [kx, ky]
@@ -39,6 +39,7 @@ if dim == 1:
         polyXDistribution = npol[0]
         for i in range(numberNodes):
             Xv[i] = (compX/(numberNodes-1)**polyXDistribution)*i**polyXDistribution
+            
     elif distx == 'trig':
         kx = k[0]
         phix = phi[0]
@@ -147,6 +148,9 @@ elif dim == 2:
     XY = np.stack((Xv,Yv),axis=-1)
     print('\n', 'Coordenada (x, y) dos pontos: ', XY)
     print('\n', 'number of elements ', ne)
+    
+
+
 
     dx = np.zeros(nx-1, dtype='float')
     dy = np.zeros(ny-1, dtype='float')
@@ -161,7 +165,9 @@ elif dim == 2:
     
     print('\n', 'dx: ', dx, '\n', 'dy: ', dy)
 
-    # gerar a IEN e calculo da area
+
+
+    # Generate IEN and calculate Area
     if geo == 'quad':
         IEN = np.zeros((ne,4), dtype='int')
 
@@ -202,6 +208,8 @@ elif dim == 2:
             ae[e] = (Xv[v1]*Yv[v2] + Xv[v2]*Yv[v3] + Xv[v3]*Yv[v1] - Xv[v1]*Yv[v3] - Xv[v2]*Yv[v1] - Xv[v3]*Yv[v2])/2.0
 
     print('\n', 'IEN: \n', IEN)
+    print('\n', 'area: \n', ae)
+    
     assert(np.isclose(np.sum(ae), Lx*Ly, rtol=1e-12))
 
     # plot
