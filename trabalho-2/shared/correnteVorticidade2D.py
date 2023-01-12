@@ -1,8 +1,3 @@
-## =================================================================== ##
-#  this is file calor2d-permanente.py, created at 28-May-2019                #
-#  maintained by Gustavo Rabello dos Anjos                              #
-#  e-mail: gustavo.rabello@gmail.com                                    #
-## =================================================================== ##
 
 import meshio
 import numpy as np
