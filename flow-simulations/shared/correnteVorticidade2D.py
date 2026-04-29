@@ -13,7 +13,7 @@ nIter = 200
 # leitura de malha e classificacao de contorno por nome (ccName)
 #mshname = 'canal.msh'
 mshFolderAndName = 'canal.msh'
-msh = meshio.read('./trabalhos/trabalho-2/canal/' + mshFolderAndName)
+msh = meshio.read('./flow-simulations/canal/' + mshFolderAndName)
 X = np.array(msh.points[:,0])
 Y = np.array(msh.points[:,1])
 npoints = len(X)

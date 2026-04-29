@@ -12,7 +12,7 @@ nIter = 500
 # leitura de malha e classificacao de contorno por nome (ccName)
 mshname = 'cilindro.msh'
 #mshname = 'cilindro.msh'
-msh = meshio.read('./trabalhos/trabalho-2/cilindro/' + mshname)
+msh = meshio.read('./flow-simulations/cilindro/' + mshname)
 X = np.array(msh.points[:,0])
 Y = np.array(msh.points[:,1])
 npoints = len(X)
